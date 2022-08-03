@@ -1,4 +1,10 @@
 import http from "../http-common";
+import  "../mock-db/index"
+
+const getUsers = () => {
+  return http.get("/users");
+};
+
 
 const getAll = () => {
   return http.get("/tutorials");
@@ -35,7 +41,8 @@ const TutorialService = {
   update,
   remove,
   removeAll,
-  findByTitle
+  findByTitle,
+  getUsers
 };
 
 export default TutorialService;

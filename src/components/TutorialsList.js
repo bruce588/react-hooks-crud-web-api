@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TutorialDataService from "../services/TutorialService";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const TutorialsList = () => {
   const [tutorials, setTutorials] = useState([]);
@@ -60,6 +61,22 @@ const TutorialsList = () => {
         console.log(e);
       });
   };
+  const getUsers = ()=>{
+
+    axios.create({
+      baseURL: "/",
+      headers: {
+        "Content-type": "application/json"
+      }}).get("/users").then(response => {
+        console.log(response.data);
+      });
+    // axios.get("/users").then(function (response) {
+    //   console.log(response.data);
+    // });
+    // TutorialDataService.getUsers().then(res=>{
+    //   console.log(res);
+    // });
+  }
 
   return (
     <div className="list row">
@@ -106,6 +123,12 @@ const TutorialsList = () => {
           onClick={removeAllTutorials}
         >
           Remove All
+        </button>
+        <button
+            className="m-3 btn btn-sm btn-danger"
+            onClick={getUsers}
+        >
+          Get Users
         </button>
       </div>
       <div className="col-md-6">
